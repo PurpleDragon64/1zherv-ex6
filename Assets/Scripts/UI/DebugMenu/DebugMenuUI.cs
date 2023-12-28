@@ -179,7 +179,7 @@ public class DebugMenuUI : MonoBehaviour
                  * be controlled from the Cheat Console.
                  */
 
-                // Toggle button for interacitve mode
+                // Interacitve mode
                 GUILayout.BeginHorizontal();
                 {
                     GUILayout.Label("Interact: ");
@@ -191,6 +191,32 @@ public class DebugMenuUI : MonoBehaviour
                     {
                         GameManager.Instance.interactiveMode = isInteractive;
                     }
+                }
+                GUILayout.EndHorizontal();
+
+                // Master volume
+                GUILayout.BeginHorizontal();
+                {
+                    GUILayout.Label("Volume: ", GUILayout.Width(WINDOW_DIMENSION.x / 4.0f));
+
+                    // volume slider
+                    var volume = SoundManager.Instance.masterVolume;
+
+                    volume = GUILayout.HorizontalSlider(volume, -80.0f, 20.0f,
+                            GUILayout.ExpandWidth(true));
+
+                    if (GUI.changed)
+                    {
+                        SoundManager.Instance.masterVolume = volume;
+                    }
+
+                    // mute button
+                    if (GUILayout.Button("Mute",
+                            GUILayout.Width(WINDOW_DIMENSION.x / 5.0f)))
+                    {
+                        SoundManager.Instance.masterMuted = !SoundManager.Instance.masterMuted;
+                    }
+
                 }
                 GUILayout.EndHorizontal();
 

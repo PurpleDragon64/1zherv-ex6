@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks.Triggers;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// The main game manager GameObject.
@@ -146,6 +147,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    [DllImport("__Internal")]
+    private static extern void CloseTab();
+
     /// <summary> Quit the game. </summary>
     public void QuitGame()
     {
@@ -171,8 +175,7 @@ public class GameManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER || UNITY_WEBGL
         // Quitting in the WebGL build:
-        // Application.OpenURL(Application.absoluteURL);
-        // Application.Unload();
+        CloseTab();
 #else // !UNITY_WEBPLAYER
         // Quitting in all other builds:
         Application.Quit();

@@ -179,7 +179,20 @@ public class DebugMenuUI : MonoBehaviour
                  * be controlled from the Cheat Console.
                  */
 
+                // Toggle button for interacitve mode
+                GUILayout.BeginHorizontal();
+                {
+                    GUILayout.Label("Interact: ");
 
+                    var isInteractive = GameManager.Instance.interactiveMode;
+                    isInteractive = GUILayout.Toggle(isInteractive, "");
+
+                    if (GUI.changed)
+                    {
+                        GameManager.Instance.interactiveMode = isInteractive;
+                    }
+                }
+                GUILayout.EndHorizontal();
 
 
 

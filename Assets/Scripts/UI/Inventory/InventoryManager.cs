@@ -357,12 +357,11 @@ public class InventoryManager : MonoBehaviour
         if (item == null)
         { // We have no item selected -> Provide some default information.
 
-            mItemCreateButton.SetEnabled(true);
+            mItemCreateButton.SetEnabled(false);
 
-            //if (mCurrentItems.Count == 0)
-            //{
-            //    mItemCreateButton.SetEnabled(false);
-            //}
+            mItemDetailName.text = "No Item Selected";
+            mItemDetailDescription.text = "Click on item to select";
+            mItemDetailCost.text = "";
         }
         else
         { // We have item selected -> Use the item information.

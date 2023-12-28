@@ -155,6 +155,7 @@ public class InventoryManager : MonoBehaviour
          */
 
         mItemCreateButton = itemDetails.Q<Button>("ItemDetailButtonCreate");
+        mItemCreateButton.clicked += () => CreateItem();
         
         
         await UniTask.WaitForEndOfFrame();
@@ -407,6 +408,7 @@ public class InventoryManager : MonoBehaviour
          */
         
         var itemDefinition = selectedItem?.definition;
+        print("CreateItem called");
         
         return false;
     }

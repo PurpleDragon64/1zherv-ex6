@@ -1,5 +1,5 @@
 ﻿mergeInto(LibraryManager.library, {
-    CloseTab: function () {
-        window.close();
+    ReloadTab: function () {
+        window.location.reload();
     },
 });

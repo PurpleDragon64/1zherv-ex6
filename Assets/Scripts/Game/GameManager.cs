@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
     }
 
     [DllImport("__Internal")]
-    private static extern void CloseTab();
+    private static extern void ReloadTab();
 
     /// <summary> Quit the game. </summary>
     public void QuitGame()
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER || UNITY_WEBGL
         // Quitting in the WebGL build:
-        CloseTab();
+        ReloadTab();
 #else // !UNITY_WEBPLAYER
         // Quitting in all other builds:
         Application.Quit();
